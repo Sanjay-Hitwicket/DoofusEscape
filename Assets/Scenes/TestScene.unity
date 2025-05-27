@@ -379,6 +379,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1026995338}
+  - component: {fileID: 1026995339}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -402,6 +403,20 @@ Transform:
   - {fileID: 1458240643}
   m_Father: {fileID: 1436882783}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1026995339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026995337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5c12b074e1a4a5d9e8380e889d8e1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  jumpAmount: 2
 --- !u!1 &1042995761
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,6 +606,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1436882783}
+  - component: {fileID: 1436882784}
   m_Layer: 0
   m_Name: Game3D
   m_TagString: Untagged
@@ -615,6 +631,24 @@ Transform:
   - {fileID: 1026995338}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1436882784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436882782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2592165bf63940c69ed17cbdebd42301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilePrefab: {fileID: 6125943772244402280, guid: e7f2be18dc684c04da95a0b54c31900c, type: 3}
+  numberOfTiles: 20
+  maxJumpDistance: 5
+  maxJumpHeight: 2
+  tileSize: {x: 2, y: 1, z: 2}
+  minGap: 1
 --- !u!1001 &1458240642
 PrefabInstance:
   m_ObjectHideFlags: 0
