@@ -58,9 +58,5 @@ namespace  DoofusEscape {
         public void SetTileData(TileData tileData) {
             
         }
-
-        public string GetTestString() {
-            return "TestString";
-        }
     }
 }

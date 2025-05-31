@@ -29,9 +29,7 @@ namespace View {
         }
         
         private void SetTimer() {
-            Debug.Log("Testing with Test string in controller ::: ");
-            var str = tileSpawner.GetTestString();
-            Debug.Log(str);
+             
         }
         
         private void SetTileColor() {
