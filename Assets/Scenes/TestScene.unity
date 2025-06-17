@@ -280,13 +280,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 447556566}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0718099, y: 0.90879583, z: -0.17553626, w: -0.37164584}
-  m_LocalPosition: {x: 2.6670034, y: 2.7618494, z: 2.7890284}
+  m_LocalRotation: {x: 0.21064237, y: 0, z: 0, w: 0.9775632}
+  m_LocalPosition: {x: -0.03684339, y: 2.5700817, z: -2.4908469}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 24.722, y: -137.063, z: 0}
+  m_LocalEulerAnglesHint: {x: 24.32, y: 0, z: 0}
 --- !u!114 &447556570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -532,6 +532,7 @@ GameObject:
   - component: {fileID: 1026995338}
   - component: {fileID: 1026995339}
   - component: {fileID: 1026995340}
+  - component: {fileID: 1026995341}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -567,8 +568,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5c12b074e1a4a5d9e8380e889d8e1aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  jumpAmount: 2
+  movementspeed: 5
+  inputSystem: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!114 &1026995340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -599,6 +600,33 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!54 &1026995341
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026995337}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1042995761
 GameObject:
   m_ObjectHideFlags: 0
@@ -827,11 +855,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 6125943772244402280, guid: e7f2be18dc684c04da95a0b54c31900c, type: 3}
-  numberOfTiles: 20
+  initialTileCount: 10
   maxJumpDistance: 5
   maxJumpHeight: 2
   tileSize: {x: 2, y: 1, z: 2}
   minGap: 1
+  characterHeight: 2
 --- !u!1001 &1458240642
 PrefabInstance:
   m_ObjectHideFlags: 0
