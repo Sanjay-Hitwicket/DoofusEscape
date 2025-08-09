@@ -1,5 +1,6 @@
 ﻿using Doofus.Systems;
 using DoofusEscape;
+using Systems.Lightweight_DI;
 
 namespace Bootstrappers {
     public class TileBootstrapper : FeatureBootstrapper {

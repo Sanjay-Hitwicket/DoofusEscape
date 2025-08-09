@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Doofus.Systems;
 using UnityEngine;
 using Model;
+using Systems.Lightweight_DI;
 
 namespace  DoofusEscape {
     public class TileSpawner : BaseController{

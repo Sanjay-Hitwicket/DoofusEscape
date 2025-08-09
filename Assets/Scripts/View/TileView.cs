@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Doofus.Systems;
 using DoofusEscape;
+using Systems.Lightweight_DI;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
