@@ -7,26 +7,21 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace View {
-    public class TileView : MonoBehaviour {
+    public class TileView : InjectableMonoBehaviour {
         [SerializeField] private Transform tile;
         
-        private TileSpawner tileSpawner;
+        [Inject] private TileSpawner _tileSpawner;
         
         private void Start() {
             Render();
         }
         
         public void Render() {
-            SetConrollers();
             SetTileColor();
             SetTimer();
         }
         
         private void SetTileData() {
-        }
-        
-        private void SetConrollers() {
-            tileSpawner = ControllerProvider.Get<TileSpawner>();
         }
         
         private void SetTimer() {

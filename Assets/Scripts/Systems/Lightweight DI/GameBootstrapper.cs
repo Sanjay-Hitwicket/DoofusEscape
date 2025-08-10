@@ -26,6 +26,9 @@ namespace Systems.Lightweight_DI {
             
             ControllerProvider.Initialize(Context);
 
+            // Initialize the ultra-fast injection processor
+            UltraFastInjectionProcessor.Initialize();
+
             _bootstrapInstaller.Install(Context);
         }
         #endregion
