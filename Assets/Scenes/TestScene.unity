@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 269663714}
   - component: {fileID: 269663716}
   - component: {fileID: 269663715}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -375,7 +375,7 @@ GameObject:
   - component: {fileID: 677404446}
   - component: {fileID: 677404448}
   - component: {fileID: 677404447}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: InGameHud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -718,7 +718,7 @@ GameObject:
   - component: {fileID: 1420492713}
   - component: {fileID: 1420492712}
   - component: {fileID: 1420492711}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -819,6 +819,7 @@ GameObject:
   - component: {fileID: 1436882783}
   - component: {fileID: 1436882784}
   - component: {fileID: 1436882785}
+  - component: {fileID: 1436882786}
   m_Layer: 0
   m_Name: Game3D
   m_TagString: Untagged
@@ -855,7 +856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2592165bf63940c69ed17cbdebd42301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilePrefab: {fileID: 6125943772244402280, guid: e7f2be18dc684c04da95a0b54c31900c, type: 3}
+  tilePrefab: {fileID: 5732170416201337584, guid: dbbafd63882f6f34aa3def91f07f5393, type: 3}
   initialTileCount: 10
   maxJumpDistance: 5
   maxJumpHeight: 2
@@ -869,7 +870,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1436882782}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef14dad2f7234d8468817f07ed28a186, type: 3}
   m_Name: 
@@ -878,6 +879,22 @@ MonoBehaviour:
   platformCount: 20
   platformSpacing: 20
   maxJumpDistance: 10
+--- !u!114 &1436882786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436882782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f414e39988774778ba09c6a57abf1537, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilePrefab: {fileID: 5732170416201337584, guid: dbbafd63882f6f34aa3def91f07f5393, type: 3}
+  maxX: 6
+  maxZ: 5
+  tileSize: 50
 --- !u!1 &1524647120
 GameObject:
   m_ObjectHideFlags: 0
@@ -998,7 +1015,7 @@ GameObject:
   - component: {fileID: 1569444741}
   - component: {fileID: 1569444740}
   - component: {fileID: 1569444742}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1106,7 +1123,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1606907729}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MoveGamepad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
