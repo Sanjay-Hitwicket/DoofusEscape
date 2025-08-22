@@ -452,6 +452,7 @@ GameObject:
   - component: {fileID: 743173527}
   - component: {fileID: 743173526}
   - component: {fileID: 743173529}
+  - component: {fileID: 743173530}
   m_Layer: 0
   m_Name: GameInstaller
   m_TagString: Untagged
@@ -473,6 +474,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _features:
   - {fileID: 743173529}
+  - {fileID: 743173530}
 --- !u!114 &743173527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -511,6 +513,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a2e0c588af243d4b087e90e4a907f8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &743173530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743173525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bda78ff451846039610c8a2a3da3b22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &946354949
