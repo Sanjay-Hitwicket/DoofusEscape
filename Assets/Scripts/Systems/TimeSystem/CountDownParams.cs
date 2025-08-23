@@ -1,10 +1,10 @@
 ﻿using System;
-using TMPro;
+using System.Threading;
 
-namespace Model {
+namespace Systems.TimeSystem {
     public class CountDownParams {
         public float duration;
-        public TMP_Text textComponent;
         public Action onCompleteCallback;
+        public CancellationToken cancellationToken = default;
     }
 }

@@ -831,8 +831,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1436882783}
-  - component: {fileID: 1436882784}
-  - component: {fileID: 1436882785}
   - component: {fileID: 1436882786}
   m_Layer: 0
   m_Name: Game3D
@@ -858,41 +856,6 @@ Transform:
   - {fileID: 650945197}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1436882784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1436882782}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2592165bf63940c69ed17cbdebd42301, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tilePrefab: {fileID: 5732170416201337584, guid: dbbafd63882f6f34aa3def91f07f5393, type: 3}
-  initialTileCount: 10
-  maxJumpDistance: 5
-  maxJumpHeight: 2
-  tileSize: {x: 2, y: 1, z: 2}
-  minGap: 1
-  characterHeight: 2
---- !u!114 &1436882785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1436882782}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef14dad2f7234d8468817f07ed28a186, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  platformPrefab: {fileID: 5732170416201337584, guid: dbbafd63882f6f34aa3def91f07f5393, type: 3}
-  platformCount: 20
-  platformSpacing: 20
-  maxJumpDistance: 10
 --- !u!114 &1436882786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1403,7 +1366,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2233514554222497043, guid: dbbafd63882f6f34aa3def91f07f5393, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: dbbafd63882f6f34aa3def91f07f5393, type: 3}
 --- !u!4 &8557391423085774024 stripped
 Transform:
