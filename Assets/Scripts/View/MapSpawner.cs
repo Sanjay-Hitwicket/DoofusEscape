@@ -4,13 +4,11 @@ using Systems.Lightweight_DI;
 using UnityEngine;
 
 namespace View {
-    public class MapSpawner : InjectableMonoBehaviour {
+    public class MapSpawner : MonoBehaviour {
         [SerializeField] private GameObject tilePrefab;
         [SerializeField] private float maxX = 6f;
         [SerializeField] private float maxZ = 5f;
         [SerializeField] private float tileSize = 20f;
-        
-        [Inject] private readonly PlayerMovementController _playerMovementController;
 
         private void Start() {
             GenerateMap();

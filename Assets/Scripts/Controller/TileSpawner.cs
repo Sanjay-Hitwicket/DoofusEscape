@@ -26,6 +26,10 @@ namespace  DoofusEscape {
             characterHeight = charHeight;
         }
 
+        public void SayHi() {
+            Debug.Log("SayHi");
+        }
+        
         public bool TryGetNextValidPosition(Vector3 current, Vector3 tileSize, out Vector3 nextPos) {
             int maxAttempts = 50;
 

@@ -200,8 +200,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8081381131624988973}
   - component: {fileID: 6761030735547516128}
-  - component: {fileID: 7081656408439796315}
-  - component: {fileID: 4714687364802995244}
+  - component: {fileID: 8504100509046722015}
+  - component: {fileID: 1259793419003346371}
+  - component: {fileID: 2654608281450740093}
   m_Layer: 0
   m_Name: NormalTile
   m_TagString: Untagged
@@ -239,14 +240,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5732170416201337584}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b75847c7801461a9cbfa6d41e53d329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tile: {fileID: 8081381131624988973}
   countDownTimer: {fileID: 3901428246666668590}
---- !u!54 &7081656408439796315
+--- !u!54 &8504100509046722015
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -269,11 +270,11 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
-  m_CollisionDetection: 0
---- !u!65 &4714687364802995244
+  m_CollisionDetection: 1
+--- !u!65 &1259793419003346371
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -292,8 +293,26 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 48, y: 6.84, z: 48}
+  m_Center: {x: 8.55, y: -3.46, z: 19.3}
+--- !u!114 &2654608281450740093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5732170416201337584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bdb8415f7c341d89450199af4d5ad2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileData:
+    position: {x: 0, y: 0, z: 0}
+    index: 0
+    gameObject: {fileID: 5732170416201337584}
+  isStart: 1
+  isEnd: 1
 --- !u!1001 &447809694336750824
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,46 +1,41 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace View {
     public class PlayerMovementView : MonoBehaviour {
         [SerializeField] private float movementspeed = 5f;
         [SerializeField] private InputActionAsset inputSystem;
+        [SerializeField] private Rigidbody rb;
         
         private InputAction moveAction;
-        private Vector2 moveInput;
-        private Rigidbody2D rb;
+        private Vector2 moveAmt;
 
-        private void Awake()
-        {
-            // Get the Rigidbody2D component
-            rb = GetComponent<Rigidbody2D>();
-            
-            // Set up the move action from the input system
+        private void Awake() {
             moveAction = inputSystem.FindActionMap("Player").FindAction("Move");
         }
 
-        private void OnEnable()
-        {
-            moveAction.Enable();
+        private void OnEnable() {
+            inputSystem.FindActionMap("Player").Enable();
+            //moveAction.Enable();
         }
 
-        private void OnDisable()
-        {
-            moveAction.Disable();
+        private void OnDisable() {
+            inputSystem.FindActionMap("Player").Disable();
+            //moveAction.Disable();
         }
 
-        void Update()
-        {
-            // Read the joystick input
-            moveInput = moveAction.ReadValue<Vector2>();
+        void Update() {
+            moveAmt = moveAction.ReadValue<Vector2>();
+            // DO JUMP ACTIONS HERE
         }
 
-        private void FixedUpdate()
-        {
-            // Apply movement using physics
-            Vector2 movement = moveInput * movementspeed;
-            rb.linearVelocity = movement;
+        private void FixedUpdate() {
+            Movement();
+        }
+
+        private void Movement() {
+            //Vector3  displacement = rb.transform.forward * moveAmt * movementspeed * Time.fixedDeltaTime;
+            rb.MovePosition(rb.position + transform.forward * moveAmt.y * movementspeed * Time.deltaTime);
         }
     }
 }

@@ -35,27 +35,29 @@ namespace Systems.Lightweight_DI {
             // Register delegates for each injectable type
             // These are compiled at build time, no reflection at runtime
             
+            // Commented out examples, uncomment and modify as needed
+            
             // Example for TileView
-            _injectionDelegates[typeof(View.TileView)] = (target) => {
-                if (target is View.TileView tileView) {
-                    // Direct field access - maximum performance
-                    var tileSpawner = ControllerProvider.Get<TileSpawner>();
-                    typeof(View.TileView)
-                        .GetField("_tileSpawner", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
-                        ?.SetValue(tileView, tileSpawner);
-                }
-            };
+            // _injectionDelegates[typeof(View.TileView)] = (target) => {
+            //     if (target is View.TileView tileView) {
+            //         // Direct field access - maximum performance
+            //         var tileSpawner = ControllerProvider.Get<TileSpawner>();
+            //         typeof(View.TileView)
+            //             .GetField("_tileSpawner", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
+            //             ?.SetValue(tileView, tileSpawner);
+            //     }
+            // };
 
             // Example for TileSpawnerView
-            _injectionDelegates[typeof(View.TileSpawnerView)] = (target) => {
-                if (target is View.TileSpawnerView tileSpawnerView) {
-                    // Direct field access - maximum performance
-                    var tileSpawner = ControllerProvider.Get<TileSpawner>();
-                    typeof(View.TileSpawnerView)
-                        .GetField("_tileSpawner", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
-                        ?.SetValue(tileSpawnerView, tileSpawner);
-                }
-            };
+            // _injectionDelegates[typeof(View.TileSpawnerView)] = (target) => {
+            //     if (target is View.TileSpawnerView tileSpawnerView) {
+            //         // Direct field access - maximum performance
+            //         var tileSpawner = ControllerProvider.Get<TileSpawner>();
+            //         typeof(View.TileSpawnerView)
+            //             .GetField("_tileSpawner", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
+            //             ?.SetValue(tileSpawnerView, tileSpawner);
+            //     }
+            // };
         }
 
         public static void RegisterInjectionDelegate<T>(Action<T> injectionDelegate) {

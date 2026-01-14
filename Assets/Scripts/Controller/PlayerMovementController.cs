@@ -1,30 +1,41 @@
-﻿using Cysharp.Threading.Tasks;
-using Model;
-using Systems.Lightweight_DI;
+﻿using Systems.Lightweight_DI;
 using Systems.StateMachine;
 using UnityEngine;
+using View.Player;
 
 namespace DoofusEscape {
     public class PlayerMovementController : BaseController {
-
+        
         private PlayerStateMachineManager playerStateMachineManager;
         
         public override void Initialize() {
-            var player = MockPlayerData();
-            SetStateMachine(player);
         }
         
-        private void SetStateMachine(Player player) {
+        public void SetStateMachine(BasePlayerView playerView) {
+            //var player = MockPlayerData();
             playerStateMachineManager = new PlayerStateMachineManager();
-            playerStateMachineManager.Init(player);
+            playerStateMachineManager.Init(playerView);
         }
 
-        public void SayHi() {
-            Debug.Log("Hi");
+        private void PlayRun() {
+            playerStateMachineManager.ChangeState(PlayerStates.Run);
         }
         
-        private Player MockPlayerData() {
-            var player = new Player {
+        public void PlayIdle() {
+            playerStateMachineManager.ChangeState(PlayerStates.Idle);
+        }
+        
+        private void PlayJump() {
+            playerStateMachineManager.ChangeState(PlayerStates.Jump);
+        }
+        
+        public void SayHi() {
+            // Just for testing
+            Debug.Log("Say Hi");
+        }
+        
+        private BasePlayerView MockPlayerData() {
+            var player = new BasePlayerView {
             };
             return player;
         }

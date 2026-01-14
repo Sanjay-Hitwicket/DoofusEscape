@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using Doofus.Systems;
 using DoofusEscape;
 using Systems.Lightweight_DI;
@@ -12,15 +13,19 @@ namespace View {
         [SerializeField] private Transform tile;
         [SerializeField] private CountDownTimer countDownTimer;
         
-        [Inject] private TileSpawner _tileSpawner;
+        [Inject] private TileSpawner _tileSpawner; // Implement InjectableMonoBehaviour to use this
         
-        private void Start() {
+        protected override void OnInjectionComplete() {
+            Debug.Log("TileView.OnInjectionComplete called Here!");
+            
+            // Now safe to use injected dependencies
             Render();
         }
         
         public void Render() {
             SetTileColor();
             SetTimer();
+            _tileSpawner.SayHi();
         }
         
         private void SetTileData() {

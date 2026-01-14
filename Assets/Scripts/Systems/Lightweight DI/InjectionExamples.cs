@@ -1,6 +1,7 @@
 using UnityEngine;
 using DoofusEscape;
 using Model;
+using View.Player;
 
 namespace Systems.Lightweight_DI {
     /// <summary>
@@ -62,11 +63,11 @@ namespace Systems.Lightweight_DI {
     /// </summary>
     public class ExampleMultipleDependencies : InjectableMonoBehaviour {
         [Inject] private TileSpawner _tileSpawner;
-        [Inject] private Player _player; // Assuming you have a Player controller
+        [Inject] private BasePlayerView _basePlayerView; // Assuming you have a Player controller
         
         private void Start() {
             // Both dependencies are automatically injected
-            Debug.Log($"TileSpawner: {_tileSpawner != null}, Player: {_player != null}");
+            Debug.Log($"TileSpawner: {_tileSpawner != null}, Player: {_basePlayerView != null}");
         }
     }
 

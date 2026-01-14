@@ -1,10 +1,17 @@
 using System;
 using System.Reflection;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Systems.Lightweight_DI {
     public static class InjectionProcessor {
-        public static void InjectDependencies(object target) {
+        public async static void InjectDependencies(object target) {
+            
+            // Wait for global injection to be ready
+            if(!GameBootstrapper.Injectable) {
+                await UniTask.WaitUntil(() => GameBootstrapper.Injectable);
+            }
+            
             if (target == null) {
                 Debug.LogWarning("Attempted to inject dependencies into null target");
                 return;
