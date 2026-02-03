@@ -4,9 +4,10 @@ using Model;
 using Systems.Lightweight_DI;
 using Unity.VisualScripting;
 using UnityEngine;
+using View.Entities;
 
 namespace View.Player {
-    public class PlayerView : BasePlayerView {
+    public class PlayerView : BasePlayerView, IEntity {
         
         [Inject] private readonly PlayerMovementController _playerMovementController;
 
@@ -21,19 +22,22 @@ namespace View.Player {
             // Now safe to use injected dependencies
             Render();
         }
-        
-        // Alternative approach using SafeStartMixin
-        // private void Start() {
-        //     Debug.Log("PlayerView.Start called Here!");
-        //     SafeStartMixin.SafeStartAsync(this, async () => {
-        //         await Render();
-        //     });
-        // }
 
         private void Render() {
             _playerMovementController.SetStateMachine(this);
             _playerMovementController.PlayIdle();
         }
-        
+
+        public void Attack() {
+            
+        }
+
+        public void TakeDamage(int damage) {
+            
+        }
+
+        public void Die() {
+            
+        }
     }
 }

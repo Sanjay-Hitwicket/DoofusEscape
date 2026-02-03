@@ -17,8 +17,13 @@ public class DOTweenTimelineEditorWindow : EditorWindow {
     
     private AnimationBlock selectedBlock;
     private AnimationBlock draggingBlock;
+    private AnimationBlock resizingBlock;
+    private bool isResizingLeft;
+    private bool isResizingRight;
     private bool isDraggingPlayhead;
     private float dragOffset;
+    private float resizeStartTime;
+    private float resizeStartDuration;
     
     public static void OpenWindow(DoTweenAnimator animator) {
         DOTweenTimelineEditorWindow window = GetWindow<DOTweenTimelineEditorWindow>("DOTween Timeline");
@@ -150,15 +155,13 @@ public class DOTweenTimelineEditorWindow : EditorWindow {
         }
         
         if (isDraggingPlayhead) {
-            if (e.type == EventType.MouseDrag)
-            {
+            if (e.type == EventType.MouseDrag) {
                 float normalizedPos = Mathf.Clamp01((e.mousePosition.x - HEADER_WIDTH) / timelineWidth);
                 currentTime = normalizedPos * targetAnimator.timelineLength;
                 Repaint();
                 e.Use();
             }
-            else if (e.type == EventType.MouseUp)
-            {
+            else if (e.type == EventType.MouseUp) {
                 isDraggingPlayhead = false;
                 e.Use();
             }
@@ -198,8 +201,24 @@ public class DOTweenTimelineEditorWindow : EditorWindow {
             float blockWidth = (block.duration / targetAnimator.timelineLength) * trackRect.width;
             Rect blockRect = new Rect(blockX, trackRect.y + 5, blockWidth, trackRect.height - 10);
             
-            Color blockColor = block == selectedBlock ? Color.yellow : block.color;
+            Color blockColor = block == selectedBlock ? Color.grey : block.color;
             EditorGUI.DrawRect(blockRect, blockColor);
+            
+            // Draw resize handles
+            float handleWidth = 8f;
+            Rect leftHandle = new Rect(blockRect.x, blockRect.y, handleWidth, blockRect.height);
+            Rect rightHandle = new Rect(blockRect.x + blockRect.width - handleWidth, blockRect.y, handleWidth, blockRect.height);
+            
+            // Highlight handles on hover
+            if (leftHandle.Contains(Event.current.mousePosition)) {
+                EditorGUI.DrawRect(leftHandle, new Color(1f, 1f, 1f, 0.5f));
+                EditorGUIUtility.AddCursorRect(leftHandle, MouseCursor.ResizeHorizontal);
+            }
+            
+            if (rightHandle.Contains(Event.current.mousePosition)) {
+                EditorGUI.DrawRect(rightHandle, new Color(1f, 1f, 1f, 0.5f));
+                EditorGUIUtility.AddCursorRect(rightHandle, MouseCursor.ResizeHorizontal);
+            }
             
             // Draw block label
             GUIStyle labelStyle = new GUIStyle(EditorStyles.miniLabel);
@@ -209,20 +228,76 @@ public class DOTweenTimelineEditorWindow : EditorWindow {
             
             // Handle block interaction
             Event e = Event.current;
-            if (e.type == EventType.MouseDown && blockRect.Contains(e.mousePosition)) {
-                selectedBlock = block;
-                draggingBlock = block;
-                dragOffset = e.mousePosition.x - blockX;
-                e.Use();
-                Repaint();
+            if (e.type == EventType.MouseDown && e.button == 0) {
+                if (leftHandle.Contains(e.mousePosition)){
+                    // Start resizing from left
+                    resizingBlock = block;
+                    isResizingLeft = true;
+                    isResizingRight = false;
+                    selectedBlock = block;
+                    resizeStartTime = block.startTime;
+                    resizeStartDuration = block.duration;
+                    e.Use();
+                }
+                else if (rightHandle.Contains(e.mousePosition)) {
+                    // Start resizing from right
+                    resizingBlock = block;
+                    isResizingRight = true;
+                    isResizingLeft = false;
+                    selectedBlock = block;
+                    resizeStartTime = block.startTime;
+                    resizeStartDuration = block.duration;
+                    e.Use();
+                }
+                else if (blockRect.Contains(e.mousePosition)) {
+                    // Start dragging the whole block
+                    selectedBlock = block;
+                    draggingBlock = block;
+                    dragOffset = e.mousePosition.x - blockX;
+                    e.Use();
+                    Repaint();
+                }
             }
             
             EditorGUILayout.EndHorizontal();
         }
         
-        // Handle dragging
+        // Handle dragging and resizing
         Event evt = Event.current;
-        if (draggingBlock != null) {
+        
+        // Handle resizing
+        if (resizingBlock != null) {
+            if (evt.type == EventType.MouseDrag) {
+                float mouseX = evt.mousePosition.x - HEADER_WIDTH;
+                float mouseTime = (mouseX / timelineWidth) * targetAnimator.timelineLength;
+                
+                if (isResizingLeft) {
+                    // Resize from left: adjust start time and duration
+                    float endTime = resizeStartTime + resizeStartDuration;
+                    float newStartTime = Mathf.Clamp(mouseTime, 0, endTime - 0.1f);
+                    resizingBlock.startTime = newStartTime;
+                    resizingBlock.duration = endTime - newStartTime;
+                }
+                else if (isResizingRight) {
+                    // Resize from right: adjust duration only
+                    float newDuration = Mathf.Max(0.1f, mouseTime - resizingBlock.startTime);
+                    newDuration = Mathf.Min(newDuration, targetAnimator.timelineLength - resizingBlock.startTime);
+                    resizingBlock.duration = newDuration;
+                }
+                
+                EditorUtility.SetDirty(targetAnimator);
+                Repaint();
+                evt.Use();
+            }
+            else if (evt.type == EventType.MouseUp) {
+                resizingBlock = null;
+                isResizingLeft = false;
+                isResizingRight = false;
+                evt.Use();
+            }
+        }
+        // Handle dragging (only if not resizing)
+        else if (draggingBlock != null) {
             if (evt.type == EventType.MouseDrag) {
                 float mouseX = evt.mousePosition.x - HEADER_WIDTH - dragOffset;
                 float newStartTime = (mouseX / timelineWidth) * targetAnimator.timelineLength;

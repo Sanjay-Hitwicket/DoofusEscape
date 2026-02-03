@@ -12,7 +12,6 @@ namespace DoofusEscape {
         }
         
         public void SetStateMachine(BasePlayerView playerView) {
-            //var player = MockPlayerData();
             playerStateMachineManager = new PlayerStateMachineManager();
             playerStateMachineManager.Init(playerView);
         }
